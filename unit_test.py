@@ -16,7 +16,6 @@ def test_boneyard_dominoes_contains_dominoes(boneyard):
     assert boneyard.dominoes()
 
 def test_boneyard_dominoes_contains_dominoes(boneyard):
-    boneyard.shuffle()
     assert len(boneyard.dominoes) == 28 
     
 def test_domino_exists():
@@ -24,7 +23,7 @@ def test_domino_exists():
 
 @pytest.fixture
 def domino():
-    domino = b.domino(x=1, y=0)
+    domino = b.domino(dots1=1, dots2=0)
     return domino
 
 def test_domino_has_two_sets_of_dots(domino):
@@ -32,6 +31,6 @@ def test_domino_has_two_sets_of_dots(domino):
 
 
 def test_domino_has_total_count_of_dots(domino):
-    assert domino.value
+    assert domino.value == 1
 
 

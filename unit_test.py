@@ -53,11 +53,11 @@ def test_player_exist():
 
 @pytest.fixture()
 def player():
-    player = pl.player('player1')
+    player = pl.player('player1', 3)
     return player
     
 def test_player_hand_is_set(player):
-    assert isinstance(player.hand, set)
+    assert isinstance(player.hand, pl.hand)
 
 def test_player_score_starts_at_0(player):
     assert player.score == 0
@@ -65,4 +65,5 @@ def test_player_score_starts_at_0(player):
 def test_player_has_name(player):
     assert player.name == 'player1'
 
-
+def test_player_hand_has_domninoes(player):
+    assert isinstance(player.hand, pl.hand) 

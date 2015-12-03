@@ -28,6 +28,3 @@ class domino():
         self.dots2 = dots2
         self.dots = (dots1, dots2) 
         self.value = dots1 + dots2
-
-
-

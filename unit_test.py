@@ -1,7 +1,11 @@
 import pytest
+import domino
 import boneyard as by
 import board as bd
 import player as pl
+
+def test_domino_exists():
+    assert domino.domino
 
 def test_boneyard_exists():
     assert by.boneyard()
@@ -53,7 +57,7 @@ def test_player_exist():
 
 @pytest.fixture()
 def player():
-    player = pl.player('player1', 3)
+    player = pl.player('player1', 3, boneyard)
     return player
     
 def test_player_hand_is_set(player):

@@ -74,6 +74,11 @@ def test_player_picks_dominoes(game):
     game.pickup_dominoes(6, game.players[0])
     assert len(game.players[0].hand) == 6
 
+def test_player_picks_domines_from_boneyard(game):
+    original_length = len(game.boneyard.dominoes)
+    game.pickup_dominoes(7, game.players[0])
+    assert len(game.boneyard.dominoes) == original_length - 7
+
 def test_game_board_is_list(game):
     assert isinstance(game.board, list)
 

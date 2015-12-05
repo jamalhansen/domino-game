@@ -5,3 +5,6 @@ class domino():
         self.dots = (dots1, dots2)
         self.value = dots1 + dots2
 
+    def __eq__(self, other):
+        return sorted(list(self.dots)) == sorted(list(other.dots))
+

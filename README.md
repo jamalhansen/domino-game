@@ -1,4 +1,7 @@
-# domino-game
+# Domino Game
+
+https://travis-ci.org/jamalhansen/domino-game.svg?branch=jh-travis-ci
+
 This is a learning project!
 
 Please submit all issues on the [Domino Game Trello Board](https://trello.com/b/nrGkYhmK)

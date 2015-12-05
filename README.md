@@ -1,6 +1,6 @@
 # Domino Game
 
-https://travis-ci.org/jamalhansen/domino-game.svg?branch=jh-travis-ci
+![Travis CI Status Widget](https://travis-ci.org/jamalhansen/domino-game.svg?branch=jh-travis-ci)
 
 This is a learning project!
 

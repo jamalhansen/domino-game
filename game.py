@@ -1,16 +1,17 @@
 import domino
 import boneyard
+from random import shuffle
 
 class game:
-    def __init__(self, players, boneyard):
-        self.boneyard = boneyard
+    def __init__(self, players, domino_set):
+        self.boneyard = boneyard.add_dominoes(domino_set) 
         self.players = players
         self.board = []
 
     def pickup_dominoes(self, num_dominoes, player):
         for domino in range(num_dominoes):
-            self.boneyard.shuffle()
-            player.hand.append(self.boneyard.dominoes.pop(0))
+            shuffle(self.boneyard)
+            player.hand.append(self.boneyard.pop(0))
     
 
 class player:

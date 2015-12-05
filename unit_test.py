@@ -1,39 +1,23 @@
 import pytest
-import domino
-import boneyard as by
+import domino as dom
+import boneyard
 import game as gm
 
 def test_domino_exists():
-    assert domino.domino
+    assert dom.domino
 
-def test_boneyard_exists():
-    assert by.boneyard
-
-@pytest.fixture
-def boneyard():
-    boneyard = by.boneyard(6)
-    return boneyard
-
-def test_boneyard_dominoes_is_list(boneyard):
-    assert isinstance(boneyard.dominoes, list)
-
-def test_boneyard_dominoes_contains_dominoes(boneyard):
-    assert boneyard.dominoes()
-
-def test_boneyard_dominoes_contains_dominoes(boneyard):
-    assert len(boneyard.dominoes) == 28 
+def test_boneyard_dominoes_contains_dominoes():
+    bones = boneyard.add_dominoes(6)
+    assert len(bones) == 28 
     
-def test_boneyard_shuffles_dominoes(boneyard):
-    old_by = boneyard
-    new_by = boneyard.shuffle
+def test_boneyard_shuffles_dominoes():
+    old_by = [1,2,3,4] 
+    new_by = boneyard.shuffle(old_by)
     assert old_by != new_by
-
-def test_domino_exists():
-    assert by.domino(0,1)
 
 @pytest.fixture
 def domino():
-    domino = by.domino(dots1=1, dots2=0)
+    domino = dom.domino(dots1=1, dots2=0)
     return domino
 
 def test_domino_has_two_sets_of_dots(domino):
@@ -60,8 +44,8 @@ def test_player_hand_is_list(player):
     assert isinstance(player.hand, list) 
 
 @pytest.fixture
-def game(boneyard):
-    game = gm.game([gm.player('player1'), gm.player('player2')], boneyard)
+def game():
+    game = gm.game([gm.player('player1'), gm.player('player2')], 6)
     return game
 
 def test_game_has_boneyard(game):
@@ -75,12 +59,13 @@ def test_player_picks_dominoes(game):
     assert len(game.players[0].hand) == 6
 
 def test_player_picks_domines_from_boneyard(game):
-    original_length = len(game.boneyard.dominoes)
+    original_length = len(game.boneyard)
     game.pickup_dominoes(7, game.players[0])
-    assert len(game.boneyard.dominoes) == original_length - 7
+    assert len(game.boneyard) == original_length - 7
 
 def test_game_board_is_list(game):
     assert isinstance(game.board, list)
 
 def test_game_boneyard_has_dominoes(game):
-    assert game.boneyard.dominoes
+    for domino in game.boneyard:
+        assert isinstance (domino, dom.domino)
